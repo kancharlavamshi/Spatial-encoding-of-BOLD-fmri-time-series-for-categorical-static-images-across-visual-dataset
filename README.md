@@ -33,3 +33,8 @@ To initiate training and analysis:
 *Uncomment **main_script_threeclass()** for advanced multi-class classification*
 
 Run the utils.py script to begin the training 
+
+## If you use this code in your research, please cite the following [paper](URL):
+- "Vamshi K. Kancharala, Debanjali Bhattacharya, Neelam Sinha". "Spatial encoding of BOLD fMRI time series for categorizing static images across visual datasets: A pilot study on human vision." *tencon2023*.
+
+
