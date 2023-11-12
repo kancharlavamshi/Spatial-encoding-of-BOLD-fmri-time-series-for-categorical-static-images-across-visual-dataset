@@ -1,5 +1,5 @@
 # src/utils.py
-
+## Import necessary libraries
 from sklearn.metrics import classification_report, confusion_matrix
 from sklearn.preprocessing import label_binarize
 from sklearn.model_selection import StratifiedKFold
@@ -13,7 +13,6 @@ from .model_preprocessing import res_ind,Model_1,Kfloding,mark_img,kf_flod_three
 
 
 def main_script_binary():
-    # Call the function from model_preprocessing.py
     coc_1=pd.read_csv('Subject1/COCO.csv')
     img_1=pd.read_csv('Subject1/ImageNet.csv')
     sun_1=pd.read_csv('Subject1/SUN.csv')
@@ -23,9 +22,10 @@ def main_script_binary():
     df_s['label']=1 #SUN
     df_C_S=pd.concat([df_c,df_s])
     df_C_S=res_ind(df_C_S)
-    
+    # Transform data into images and print shapes
     x,y=mark_img(df_C_S)
     print('x.shape y.shape', x.shape,y.shape)
+    # Create and train the binary classification model
     model_1 = Model_1()
     kf=10
     floder_path='/content/out1/'
@@ -33,7 +33,6 @@ def main_script_binary():
     Kfloding(kf,model_1,x,y,floder_path,model_file,'subject_1',20,batch)
 
 def main_script_threeclass():
-    # Call the function from model_preprocessing.py
     coc_1=pd.read_csv('Subject1/COCO.csv')
     img_1=pd.read_csv('Subject1/ImageNet.csv')
     sun_1=pd.read_csv('Subject1/SUN.csv')
@@ -46,6 +45,7 @@ def main_script_threeclass():
     df_total=pd.concat([df_i,df_c,df_s])
     df_total=res_ind(df_total)
     dat = df_total.copy()
+    # Transform data into images and print shapes
     x,y=mark_img(dat)
     print('x.shape y.shape', x.shape,y.shape)
     kf=10
