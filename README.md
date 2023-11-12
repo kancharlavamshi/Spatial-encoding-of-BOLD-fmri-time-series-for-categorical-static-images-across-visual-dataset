@@ -34,7 +34,7 @@ To initiate training and analysis:
 
 Run the utils.py script to begin the training 
 
-## If you use this code in your research, please cite the following [paper](URL):
+## If you use this code in your research, please cite the following [paper](https://scholar.google.com/citations?view_op=view_citation&hl=en&user=KGMPrJUAAAAJ&citation_for_view=KGMPrJUAAAAJ:2osOgNQ5qMEC):
 - "Vamshi K. Kancharala, Debanjali Bhattacharya, Neelam Sinha". "Spatial encoding of BOLD fMRI time series for categorizing static images across visual datasets: A pilot study on human vision." *tencon2023*.
 
 
