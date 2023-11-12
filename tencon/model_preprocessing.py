@@ -1,9 +1,8 @@
+# Import necessary libraries
 import pandas as pd
 from pyts.image import MarkovTransitionField
 import matplotlib.pyplot as plt
 from sklearn.model_selection import train_test_split, StratifiedKFold
-
-
 from tensorflow.keras.models import Sequential,load_model
 from tensorflow.keras.layers import Dense, Dropout, Flatten,Conv2D, MaxPooling2D
 from tensorflow.keras.callbacks import EarlyStopping, ModelCheckpoint
@@ -22,12 +21,13 @@ from pyts.image import GramianAngularField
 
 
 
-
+# Function to reset the index of a DataFrame and drop the old index column
 def res_ind(df):
   df=df.reset_index()
   df=df.drop(['index'], axis=1)
   return df
-
+  
+#Neural network model
 def Model_1():
   model = Sequential()
   model.add(Conv2D(32, (2, 2), activation='relu', input_shape=(16, 16,1)) )
@@ -42,6 +42,7 @@ def Model_1():
                 metrics=['accuracy','Precision','Recall'])
   return model
 
+# Function for k-fold cross-validation
 
 def Kfloding(kf,model,x,y,floder_path,model_file,subject,epochs,batch_size):
   callback_2 = ModelCheckpoint(floder_path +str(subject)+'__'+str(model_file)+'.h5', monitor='val_accuracy', mode='max', verbose=1, save_best_only=True)
@@ -71,7 +72,7 @@ def Kfloding(kf,model,x,y,floder_path,model_file,subject,epochs,batch_size):
 
 
 
-
+# Function to transform data into images using GramianAngularField
 def mark_img(dat):
   gram = GramianAngularField(image_size=16, method='summation')##change method='difference' for GramianAngularField difference
   gram_t = gram.fit_transform(dat.iloc[:,:-1])
@@ -79,7 +80,7 @@ def mark_img(dat):
   y=dat['label']
   return x,y
 
-
+# Function for k-fold cross-validation 
 def kf_flod_three(kf,x,y,floder_path,model_file,subject,epochs,batch_size):
     model1 = Sequential()
     model1.add(Conv2D(32, (2, 2), activation='relu', input_shape=(16, 16,1)))
